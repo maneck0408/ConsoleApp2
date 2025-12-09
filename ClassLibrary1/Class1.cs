@@ -4,18 +4,18 @@ namespace ClassLibrary1;
 
 public class YamsGame
 {
-    private readonly Random r = new();
+    Random r = new();
 
-    private readonly string[] cat =
+    string[] cat =
     {
         "1", "2", "3", "4", "5", "6",
         "Brelan", "Carré", "Full", "Petite suite",
         "Grande suite", "Yams", "Chance"
     };
 
-    private readonly int[] scores = new int[13];
-    private readonly bool[] used = new bool[13];
-    private readonly int[] des = new int[5];
+    int[] scores = new int[13];
+    bool[] used = new bool[13];
+    readonly int[] des = new int[5];
 
     public void Jouer()
     {
@@ -55,16 +55,13 @@ public class YamsGame
 
         AfficherResultat();
     }
-
-    // ----------------- méthodes privées -----------------
-
-    private void LancerTous()
+    void LancerTous()
     {
         for (int i = 0; i < 5; i++)
             des[i] = r.Next(1, 7);
     }
 
-    private void RelancerChoisis()
+    void RelancerChoisis()
     {
         Console.WriteLine("Numéros des dés à relancer (1..5) séparés par des espaces :");
         string[] s = (Console.ReadLine() ?? "")
@@ -79,13 +76,13 @@ public class YamsGame
             if (rel[i]) des[i] = r.Next(1, 7);
     }
 
-    private void AfficherDes()
+    void AfficherDes()
     {
         for (int i = 0; i < 5; i++)
             Console.WriteLine($"Dé {i + 1} : {des[i]}");
     }
 
-    private int DemanderCategorie()
+    int DemanderCategorie()
     {
         while (true)
         {
@@ -100,7 +97,7 @@ public class YamsGame
         }
     }
 
-    private int CalculerScore(int c)
+    int CalculerScore(int c)
     {
         int[] cnt = new int[7];
         int sum = 0;
@@ -167,7 +164,7 @@ public class YamsGame
         return 0;
     }
 
-    private void AfficherResultat()
+    void AfficherResultat()
     {
         int total = 0;
         Console.WriteLine("\n--- Résumé ---");

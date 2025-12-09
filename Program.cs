@@ -1,5 +1,5 @@
 ﻿using System;
-using ClassLibrary1;   // ← la librairie
+using ClassLibrary1;
 
 var game = new YamsGame();
 game.Jouer();
